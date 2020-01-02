@@ -1,9 +1,41 @@
 import React from 'react';
-
+import $ from 'jquery'; 
 // Build out the view for the top ten HackerNews stories here. 
 // Each story should have a title, author, and score. 
 // You may wish to refactor the existing component structure - that's fine.
-const TopTen = () => (
+
+// class TopTen extends React.Component{
+//   constructor(props) {
+//     super(props); 
+  //   this.state = {
+  //     Title: "",
+  //     author :"" ,
+  //     Score: ""
+  //   };
+  //   this.updateState = this.updateState.bind(this);
+  // }
+  // updateState(data) {
+  //   this.setState({ 
+  //   Title: data.title,
+  //   author : data.author ,
+  //   Score: data.score
+  //   });
+  //  }
+
+  // displayStories() {
+  //   $.ajax({
+  //     url: '/',
+  //     method: 'GET',
+  //     success: function(data) {
+  //       this.setState({stories :data});
+  //     },
+  //     error: function(err) {
+  //       console.log(error);
+  //     }
+  //   });
+  // }
+  const TopTen = props => (
+
   <div>
   <h1> Top Ten Stories </h1>
   <table>
@@ -15,16 +47,17 @@ const TopTen = () => (
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Switch – New Video Game System [video]</td>
-        <td>ocdtrekkie</td>
-        <td>536</td>
-      </tr>
-      <tr>
-        <td>Video Games Are Changing the Way Soccer Is Played</td>
-        <td>mhb</td>
-        <td>100</td>
-      </tr>
+      {props.data.map((element, i) => {
+        return(
+            <tr key= {i}>
+                <td>{element.title}</td>
+                <td>{element.by}</td>
+                <td>{element.score}</td>
+            </tr>
+
+        )
+      })}
+    
     </tbody>
   </table>
 </div>
